@@ -1,0 +1,9 @@
+{
+  "buildCommand": "cd frontend && npm run build",
+  "installCommand": "cd backend && npm install && cd ../frontend && npm install",
+  "outputDirectory": "frontend/build",
+  "env": {
+    "OPENAI_API_KEY": "@openai_api_key",
+    "HUGGING_FACE_API_KEY": "@hugging_face_api_key"
+  }
+}
