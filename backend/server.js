@@ -408,11 +408,16 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'Backend is running', timestamp: new Date() });
 });
 
-// Start Server
-app.listen(PORT, () => {
-  console.log(`🚀 Pear Media Backend running on http://localhost:${PORT}`);
-  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`✅ Image Generation: Pixabay API (Real Photos)`);
-  console.log(`📊 Using: FREE 500k/month photo search`);
-});
+// Export for Vercel Serverless Functions
+module.exports = app;
+
+// Start Server (only for local development)
+if (process.env.NODE_ENV !== 'production' && require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`🚀 Pear Media Backend running on http://localhost:${PORT}`);
+    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+    console.log(`✅ Image Generation: Pixabay API (Real Photos)`);
+    console.log(`📊 Using: FREE 500k/month photo search`);
+  });
+}
 

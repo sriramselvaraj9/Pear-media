@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 import './components.css';
 
 function TextEnhancer() {
@@ -23,7 +23,7 @@ function TextEnhancer() {
     setApproved(false);
 
     try {
-      const response = await axios.post('/api/text/enhance', {
+      const response = await api.post('/api/text/enhance', {
         text: inputText,
       });
       setEnhancedText(response.data.enhanced);
@@ -43,7 +43,7 @@ function TextEnhancer() {
     setGeneratingImage(true);
 
     try {
-      const response = await axios.post('/api/image/generate', {
+      const response = await api.post('/api/image/generate', {
         prompt: enhancedText,
       });
       setGeneratedImage(response.data.imageUrl);

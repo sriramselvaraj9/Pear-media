@@ -4,6 +4,18 @@
   "outputDirectory": "frontend/build",
   "env": {
     "OPENAI_API_KEY": "@openai_api_key",
-    "HUGGING_FACE_API_KEY": "@hugging_face_api_key"
+    "HUGGING_FACE_API_KEY": "@hugging_face_api_key",
+    "PIXABAY_API_KEY": "@pixabay_api_key"
+  },
+  "experimentalServices": {
+    "frontend": {
+      "entrypoint": "frontend",
+      "routePrefix": "/",
+      "framework": "create-react-app"
+    },
+    "backend": {
+      "entrypoint": "backend",
+      "routePrefix": "/_/backend"
+    }
   }
 }

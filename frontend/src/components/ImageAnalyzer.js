@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 import './components.css';
 
 function ImageAnalyzer() {
@@ -32,7 +32,7 @@ function ImageAnalyzer() {
     setAnalysis('');
 
     try {
-      const response = await axios.post('/api/image/analyze', {
+      const response = await api.post('/api/image/analyze', {
         imageUrl: imageUrl,
       });
       setAnalysis(response.data.analysis);

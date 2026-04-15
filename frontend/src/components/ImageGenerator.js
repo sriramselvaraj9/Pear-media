@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 import './components.css';
 
 function ImageGenerator() {
@@ -24,7 +24,7 @@ function ImageGenerator() {
     setGeneratedImage('');
 
     try {
-      const response = await axios.post('/api/image/generate', {
+      const response = await api.post('/api/image/generate', {
         prompt: prompt,
       });
       setGeneratedImage(response.data.imageUrl);
@@ -44,7 +44,7 @@ function ImageGenerator() {
     setError('');
 
     try {
-      const response = await axios.post('/api/image/variations', {
+      const response = await api.post('/api/image/variations', {
         prompt: prompt,
         style: selectedStyle,
       });
